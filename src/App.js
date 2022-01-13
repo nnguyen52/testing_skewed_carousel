@@ -36,7 +36,7 @@ function App() {
           height: '100vh',
           maxHeight: '100vh',
           overflowX: 'hidden',
-          background: 'lightpink',
+          background: 'black',
         }}
       >
         <LayoutGroup>
@@ -51,8 +51,7 @@ function App() {
                   width: '100%',
                   zIndex: index,
                   transform: 'skewX(-10deg)',
-                  border: '2px solid red',
-                  overflow: 'hidden',
+                  overflowX: 'hidden',
                   position: 'relative',
                 }}
                 layout
@@ -66,10 +65,12 @@ function App() {
                     backgroundImage: `url(${each.src})`,
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
-                    width: '100%',
+                    width: '160%',
                     height: '100%',
-                    maxWidth: '220%',
                     transform: 'skewX(10deg)',
+                    position: 'absolute',
+                    top: 0,
+                    left: '-30%',
                   }}
                 ></motion.div>
               </motion.div>
@@ -77,9 +78,6 @@ function App() {
           })}
         </LayoutGroup>
       </div>
-      {/* ///////////// */}
-      <hr />
-      Phải cover pink background.
     </MotionConfig>
   );
 }
