@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AnimatePresence, LayoutGroup } from 'framer-motion';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AnimatePresence exitBeforeEnter>
+      <App />
+    </AnimatePresence>
   </React.StrictMode>,
   document.getElementById('root')
 );
