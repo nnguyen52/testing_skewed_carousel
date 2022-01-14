@@ -28,9 +28,23 @@ function App() {
       title: 'deracine',
     },
   ];
+
+  const textMotion = {
+    rest: {
+      opacity: 0,
+      ease: 'easeOut',
+      y: '50px',
+      duration: 0.5,
+    },
+    hover: {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+    },
+  };
   return (
     <>
-      <MotionConfig transition={{ duration: 0.6 }}>
+      <MotionConfig transition={{ duration: 0.6, when: 'beforeChildren', staggerChildren: 0.5 }}>
         <div
           style={{
             display: 'flex',
@@ -48,32 +62,62 @@ function App() {
                   className="image_wrapper"
                   key={each.src}
                   style={{
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transform: 'skewX(-10deg)',
                     minWidth: '100vw' / data.length,
                     width: '100%',
                     zIndex: index,
-                    transform: 'skewX(-10deg)',
-                    overflowX: 'hidden',
-                    position: 'relative',
                   }}
                   layout
                   layoutId="carousel_item"
+                  transition={{ when: 'beforeChildren' }}
                   whileHover={{
                     width: '220%',
                   }}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                  }}
                 >
                   <motion.div
+                    initial="rest"
+                    animate="rest"
+                    whileHover="hover"
+                    overflow="hidden"
                     style={{
-                      backgroundImage: `url(${each.src})`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'cover',
-                      width: '165%',
-                      height: '100%',
-                      transform: 'skewX(10deg)',
                       position: 'absolute',
                       top: 0,
                       left: '-33%',
+                      width: '165%',
+                      height: '100%',
+                      transform: 'skewX(10deg)',
+                      backgroundImage: `url(${each.src})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
                     }}
-                  ></motion.div>
+                  >
+                    <motion.span
+                      style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        width: '100%',
+                        height: 'auto',
+                        transform: 'translate(0, 50%)',
+                        zIndex: 1000,
+                        textAlign: 'center',
+                        fontSize: '2em',
+                        color: 'white',
+                        backgroundColor: 'black',
+                      }}
+                      variants={textMotion}
+                    >
+                      {each.title}
+                    </motion.span>
+                  </motion.div>
                 </motion.div>
               );
             })}
