@@ -29,56 +29,58 @@ function App() {
     },
   ];
   return (
-    <MotionConfig transition={{ duration: 0.5 }}>
-      <div
-        style={{
-          display: 'flex',
-          height: '100vh',
-          maxHeight: '100vh',
-          overflowX: 'hidden',
-          background: 'black',
-        }}
-      >
-        <LayoutGroup>
-          {data.map((each, index) => {
-            return (
-              <motion.div
-                onClick={() => alert(`you chose ${each.title}`)}
-                className="image_wrapper"
-                key={each.src}
-                style={{
-                  minWidth: '100vw' / 6,
-                  width: '100%',
-                  zIndex: index,
-                  transform: 'skewX(-10deg)',
-                  overflowX: 'hidden',
-                  position: 'relative',
-                }}
-                layout
-                layoutId="carousel_item"
-                whileHover={{
-                  width: '220%',
-                }}
-              >
+    <>
+      <MotionConfig transition={{ duration: 0.6 }}>
+        <div
+          style={{
+            display: 'flex',
+            height: '100vh',
+            maxHeight: '100vh',
+            overflowX: 'hidden',
+            background: 'black',
+          }}
+        >
+          <LayoutGroup>
+            {data.map((each, index) => {
+              return (
                 <motion.div
+                  onClick={() => alert(`you chose ${each.title}`)}
+                  className="image_wrapper"
+                  key={each.src}
                   style={{
-                    backgroundImage: `url(${each.src})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    width: '160%',
-                    height: '100%',
-                    transform: 'skewX(10deg)',
-                    position: 'absolute',
-                    top: 0,
-                    left: '-30%',
+                    minWidth: '100vw' / data.length,
+                    width: '100%',
+                    zIndex: index,
+                    transform: 'skewX(-10deg)',
+                    overflowX: 'hidden',
+                    position: 'relative',
                   }}
-                ></motion.div>
-              </motion.div>
-            );
-          })}
-        </LayoutGroup>
-      </div>
-    </MotionConfig>
+                  layout
+                  layoutId="carousel_item"
+                  whileHover={{
+                    width: '220%',
+                  }}
+                >
+                  <motion.div
+                    style={{
+                      backgroundImage: `url(${each.src})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
+                      width: '165%',
+                      height: '100%',
+                      transform: 'skewX(10deg)',
+                      position: 'absolute',
+                      top: 0,
+                      left: '-33%',
+                    }}
+                  ></motion.div>
+                </motion.div>
+              );
+            })}
+          </LayoutGroup>
+        </div>
+      </MotionConfig>
+    </>
   );
 }
 
