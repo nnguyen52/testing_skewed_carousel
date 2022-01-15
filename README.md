@@ -1,4 +1,4 @@
-### Demo (NO responsive for ipad or android!)
+### Demo (NO responsive for ipad or mobile!)
 https://nnguyen52.github.io/testing_skewed_carousel/ 
 <hr>
 cd my-app <br> 
