@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/testing_skewed_carousel/static/css/main.f40244dc.css",
-    "main.js": "/testing_skewed_carousel/static/js/main.7a59575a.js",
+    "main.css": "/testing_skewed_carousel/static/css/main.a0a73b37.css",
+    "main.js": "/testing_skewed_carousel/static/js/main.00af5f20.js",
     "static/js/787.edd59a96.chunk.js": "/testing_skewed_carousel/static/js/787.edd59a96.chunk.js",
     "index.html": "/testing_skewed_carousel/index.html",
-    "main.f40244dc.css.map": "/testing_skewed_carousel/static/css/main.f40244dc.css.map",
-    "main.7a59575a.js.map": "/testing_skewed_carousel/static/js/main.7a59575a.js.map",
+    "main.a0a73b37.css.map": "/testing_skewed_carousel/static/css/main.a0a73b37.css.map",
+    "main.00af5f20.js.map": "/testing_skewed_carousel/static/js/main.00af5f20.js.map",
     "787.edd59a96.chunk.js.map": "/testing_skewed_carousel/static/js/787.edd59a96.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f40244dc.css",
-    "static/js/main.7a59575a.js"
+    "static/css/main.a0a73b37.css",
+    "static/js/main.00af5f20.js"
   ]
 }
