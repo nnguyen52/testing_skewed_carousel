@@ -1,31 +1,43 @@
 import { LayoutGroup, motion, MotionConfig } from 'framer-motion';
 import './App.css';
-
+import GeneralModal from './GeneralModal';
+import { useState } from 'react';
+import FromSoftwareLogo from './FromSoftwareLogo';
 function App() {
+  const [openModal, setOpenModal] = useState(false);
+  const [chosenGame, setChosenGame] = useState(null);
   const data = [
     {
-      src: 'https://dontfeedthegamers.com/wp-content/uploads/2018/04/dark-souls-remastered-.jpg',
-      title: 'dark souls remastered',
+      background:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc1.staticflickr.com%2F5%2F4627%2F25753561898_c5133687e2_o.jpg&f=1&nofb=1',
+      title: 'Dark Souls remastered',
     },
     {
-      src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F4.bp.blogspot.com%2F-R4Dru_FNRaE%2FUSvVMyvuyjI%2FAAAAAAAAAFs%2Fg8ySgjPSeFU%2Fs640%2FArmored-Core-Verdict-Day-Splash-Image.jpg&f=1&nofb=1',
-      title: 'verdict day',
+      background: 'http://getwallpapers.com/wallpaper/full/0/3/1/538037.jpg',
+      title: 'Dark Souls 3',
     },
     {
-      src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.blog4ever.com%2F2019%2F06%2F852595%2F20210610223329_9028582.jpg&f=1&nofb=1',
-      title: 'elden ring',
+      background:
+        'https://preview.redd.it/smrxt8ruho671.jpg?width=960&crop=smart&auto=webp&s=a95824d7c4fcb3fb1f75488cbf6ba676f02223a8',
+      title: 'Elden Ring',
     },
     {
-      src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1600%2F1*_8Zs4hYmrT-_-gk3r1mlAw.jpeg&f=1&nofb=1',
-      title: 'sekiro',
+      background: 'https://images5.alphacoders.com/100/1004016.jpg',
+      poster:
+        'https://cdn.shopify.com/s/files/1/0082/7192/1218/articles/sekiro_2000x.jpg?v=1559160906',
+      title: 'Sekiro',
     },
     {
-      src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.playstation.com%2Fis%2Fimage%2FSCEA%2Fbloodborne-listing-thumb-01-ps4-us-05jun14%3F%24Icon%24&f=1&nofb=1',
-      title: 'bloodborne',
+      background:
+        'https://images.pushsquare.com/0edd45176a68b/bloodborne-remaster-ps5-pc.original.jpg',
+      title: 'Bloodborne',
     },
     {
-      src: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.gameaxis.com%2Fwp-content%2Fuploads%2F2018%2F11%2FDeracine_Review_05-1024x576.jpg&f=1&nofb=1',
-      title: 'deracine',
+      background:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fdemons-souls-remake-2020_bGlqbm2UmZqaraWkpJRobWllrWdma2U.jpg&f=1&nofb=1',
+      title: "Demon's Souls",
+      titleImg:
+        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.launchbox-app.com%2F9218f8d4-1d84-48e7-9d00-b6de30f89035.png&f=1&nofb=1',
     },
   ];
 
@@ -44,6 +56,8 @@ function App() {
   };
   return (
     <>
+      <FromSoftwareLogo />
+      {openModal && <GeneralModal chosenGame={chosenGame} setOpenModal={setOpenModal} />}
       <MotionConfig transition={{ duration: 0.6, when: 'beforeChildren', staggerChildren: 0.5 }}>
         <div
           style={{
@@ -58,9 +72,12 @@ function App() {
             {data.map((each, index) => {
               return (
                 <motion.div
-                  onClick={() => alert(`you chose ${each.title}`)}
+                  onClick={() => {
+                    setOpenModal((prev) => !prev);
+                    setChosenGame(data[index]);
+                  }}
+                  key={each.title}
                   className="image_wrapper"
-                  key={each.src}
                   style={{
                     position: 'relative',
                     overflow: 'hidden',
@@ -77,6 +94,7 @@ function App() {
                   }}
                   initial={{
                     opacity: 0,
+                    transform: 'skewX(-10deg)',
                   }}
                   animate={{
                     opacity: 1,
@@ -94,9 +112,11 @@ function App() {
                       width: '165%',
                       height: '100%',
                       transform: 'skewX(10deg)',
-                      backgroundImage: `url(${each.src})`,
+                      backgroundImage:
+                        each.title === 'Sekiro' ? `url(${each.poster})` : `url(${each.background})`,
                       backgroundPosition: 'center',
                       backgroundSize: 'cover',
+                      overflow: 'hidden',
                     }}
                   >
                     <motion.span
@@ -116,6 +136,20 @@ function App() {
                       variants={textMotion}
                     >
                       {each.title}
+                      {/* {each.titleImg ? (
+                        <motion.img
+                          src={each.titleImg}
+                          alt=""
+                          style={{
+                            width: '100%',
+                            maxWidth: `${'100vw' / data.length}%`,
+                            objectFit: 'cover',
+                            position: 'center',
+                            alignItems: 'center',
+                            transform: 'skewX(10deg)',
+                          }}
+                        />
+                      ) : null} */}
                     </motion.span>
                   </motion.div>
                 </motion.div>
