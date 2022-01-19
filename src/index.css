@@ -1,4 +1,4 @@
-*,
+* , *::before , *::after,
 body {
   box-sizing: border-box;
   margin: 0;
@@ -71,9 +71,14 @@ code {
 .general_content {
   grid-area: general_content;
   width: 100%;
-  height: 100%;
+  height: auto;
   background: rgba(0, 0, 0, 0.2);
   z-index: 9998;
+  border : 3px solid red; 
+  position : relative; 
+  display: flex; 
+  flex-wrap: wrap; 
+  flex-direction:  column; 
 }
 
 /* Clsoe button */
@@ -115,3 +120,20 @@ code {
   border-left: solid 2px white;
   transform: skewX(-45deg);
 }
+
+/* general_content_main  */
+.general_content_main {
+  width : 100%; 
+  flex-grow: 1;
+}
+.general_content_main  p {
+font-size: 1.2em; 
+color : white;
+width : 100%; 
+text-align: center;
+}
+
+
+
+/* RESPONSIVE */ 
+@import url('./responsive.css');

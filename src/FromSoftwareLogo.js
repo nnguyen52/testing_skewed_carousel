@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React from 'react';
-
+import logo  from './assets/logo.png' ;
 const FromSoftwareLogo = () => {
   return (
     <motion.div
@@ -17,16 +17,17 @@ const FromSoftwareLogo = () => {
         opacity: 0,
       }}
       animate={{
-        y: 0,
+        y: '-2vw',
         opacity: 1,
       }}
       transition={{
-        delay: 1,
+        delay: 2,
         duration: 1.5,
       }}
+      className = 'fromsoftwareLogo'
     >
       <img
-        src="https://media.fromsoftware.jp/fromsoftware/jp/static/img/top/sp/logo.png"
+        src={logo}
         alt=""
         style={{
           width: '100%',
