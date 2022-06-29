@@ -1,51 +1,53 @@
-import { LayoutGroup, motion, MotionConfig } from 'framer-motion';
-import './App.css';
-import GeneralModal from './GeneralModal';
-import { useState } from 'react';
-import FromSoftwareLogo from './FromSoftwareLogo';
+import { LayoutGroup, motion, MotionConfig } from "framer-motion";
+import "./App.css";
+import GeneralModal from "./GeneralModal";
+import { useState } from "react";
+import FromSoftwareLogo from "./FromSoftwareLogo";
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const [chosenGame, setChosenGame] = useState(null);
   const data = [
     {
       background:
-        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fc1.staticflickr.com%2F5%2F4627%2F25753561898_c5133687e2_o.jpg&f=1&nofb=1',
-      title: 'Dark Souls remastered',
-    },
-    {
-      background: 'http://getwallpapers.com/wallpaper/full/0/3/1/538037.jpg',
-      title: 'Dark Souls 3',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528536/My_Resume/skw1_rovlco.jpg",
+      title: "Dark Souls remastered",
     },
     {
       background:
-        'https://preview.redd.it/smrxt8ruho671.jpg?width=960&crop=smart&auto=webp&s=a95824d7c4fcb3fb1f75488cbf6ba676f02223a8',
-      title: 'Elden Ring',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528536/My_Resume/skw2_kby80k.jpg",
+      title: "Dark Souls 3",
     },
     {
-      background: 'https://images5.alphacoders.com/100/1004016.jpg',
+      background:
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528615/My_Resume/skw7_rk3u5j.png",
+      title: "Elden Ring",
+    },
+    {
+      background:
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528535/My_Resume/skw3_rzibem.jpg",
       poster:
-        'https://cdn.shopify.com/s/files/1/0082/7192/1218/articles/sekiro_2000x.jpg?v=1559160906',
-      title: 'Sekiro',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528535/My_Resume/skw3_rzibem.jpg",
+      title: "Sekiro",
     },
     {
       background:
-        'https://images.pushsquare.com/0edd45176a68b/bloodborne-remaster-ps5-pc.original.jpg',
-      title: 'Bloodborne',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528535/My_Resume/sk4_obq4fx.jpg",
+      title: "Bloodborne",
     },
     {
       background:
-        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.wallpapersden.com%2Fimage%2Fdownload%2Fdemons-souls-remake-2020_bGlqbm2UmZqaraWkpJRobWllrWdma2U.jpg&f=1&nofb=1',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528539/My_Resume/skw55_j5iwca.jpg",
       title: "Demon's Souls",
       titleImg:
-        'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.launchbox-app.com%2F9218f8d4-1d84-48e7-9d00-b6de30f89035.png&f=1&nofb=1',
+        "https://res.cloudinary.com/cloudinarystore/image/upload/v1656528536/My_Resume/skw66_yqnkxb.png",
     },
   ];
 
   const textMotion = {
     rest: {
       opacity: 0,
-      ease: 'easeOut',
-      y: '50px',
+      ease: "easeOut",
+      y: "50px",
       duration: 0.5,
     },
     hover: {
@@ -57,15 +59,23 @@ function App() {
   return (
     <>
       <FromSoftwareLogo />
-      {openModal && <GeneralModal chosenGame={chosenGame} setOpenModal={setOpenModal} />}
-      <MotionConfig transition={{ duration: 0.6, when: 'beforeChildren', staggerChildren: 0.5 }}>
+      {openModal && (
+        <GeneralModal chosenGame={chosenGame} setOpenModal={setOpenModal} />
+      )}
+      <MotionConfig
+        transition={{
+          duration: 0.6,
+          when: "beforeChildren",
+          staggerChildren: 0.5,
+        }}
+      >
         <div
           style={{
-            display: 'flex',
-            height: '100vh',
-            maxHeight: '100vh',
-            overflowX: 'hidden',
-            background: 'black',
+            display: "flex",
+            height: "100vh",
+            maxHeight: "100vh",
+            overflowX: "hidden",
+            background: "black",
           }}
         >
           <LayoutGroup>
@@ -79,22 +89,22 @@ function App() {
                   key={each.title}
                   className="image_wrapper"
                   style={{
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transform: 'skewX(-10deg)',
-                    minWidth: '100vw' / data.length,
-                    width: '100%',
+                    position: "relative",
+                    overflow: "hidden",
+                    transform: "skewX(-10deg)",
+                    minWidth: "100vw" / data.length,
+                    width: "100%",
                     zIndex: index,
                   }}
                   layout
                   layoutId="carousel_item"
-                  transition={{ when: 'beforeChildren' }}
+                  transition={{ when: "beforeChildren" }}
                   whileHover={{
-                    width: '220%',
+                    width: "220%",
                   }}
                   initial={{
                     opacity: 0,
-                    transform: 'skewX(-10deg)',
+                    transform: "skewX(-10deg)",
                   }}
                   animate={{
                     opacity: 1,
@@ -106,32 +116,34 @@ function App() {
                     whileHover="hover"
                     overflow="hidden"
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       top: 0,
-                      left: '-33%',
-                      width: '165%',
-                      height: '100%',
-                      transform: 'skewX(10deg)',
+                      left: "-33%",
+                      width: "165%",
+                      height: "100%",
+                      transform: "skewX(10deg)",
                       backgroundImage:
-                        each.title === 'Sekiro' ? `url(${each.poster})` : `url(${each.background})`,
-                      backgroundPosition: 'center',
-                      backgroundSize: 'cover',
-                      overflow: 'hidden',
+                        each.title === "Sekiro"
+                          ? `url(${each.poster})`
+                          : `url(${each.background})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      overflow: "hidden",
                     }}
                   >
                     <motion.span
                       style={{
-                        position: 'absolute',
-                        top: '50%',
+                        position: "absolute",
+                        top: "50%",
                         left: 0,
-                        width: '100%',
-                        height: 'auto',
-                        transform: 'translate(0, 50%)',
+                        width: "100%",
+                        height: "auto",
+                        transform: "translate(0, 50%)",
                         zIndex: 1000,
-                        textAlign: 'center',
-                        fontSize: '2em',
-                        color: 'white',
-                        backgroundColor: 'black',
+                        textAlign: "center",
+                        fontSize: "2em",
+                        color: "white",
+                        backgroundColor: "black",
                       }}
                       variants={textMotion}
                     >
